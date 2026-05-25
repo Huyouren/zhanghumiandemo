@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "preview": "vite preview --host 0.0.0.0",
+    "build": "vite build",
+    "qr": "node scripts/generate-qr.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "jsdom": "latest",
+    "playwright": "^1.60.0",
+    "qrcode": "^1.5.4",
+    "vitest": "latest"
+  }
+}

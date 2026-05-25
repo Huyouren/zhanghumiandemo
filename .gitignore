@@ -1,0 +1,10 @@
+node_modules/
+dist/
+output/
+dev-server.log
+dev-server.err.log
+*.zip
+*.docx
+analysis_media/
+analysis_docx_extract.txt
+素材/

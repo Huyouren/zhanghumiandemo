@@ -1,0 +1,58 @@
+[
+  {
+    "file": "public/assets/hero-silk-bedroom.png",
+    "useCase": "product-mockup",
+    "size": "1024x1536",
+    "quality": "high",
+    "prompt": "Photorealistic Chinese premium silk quilt in a bright natural-light bedroom, subtle Yunnan mountain and craft atmosphere, soft white silk texture, refined but not luxurious, no logo, no text, no watermark, mobile hero composition."
+  },
+  {
+    "file": "public/assets/product-golden-silk.png",
+    "useCase": "product-mockup",
+    "size": "1024x1024",
+    "quality": "high",
+    "prompt": "Catalog-quality golden silk quilt product photo, folded quilt with visible soft silk filling detail, clean ivory background, natural texture, premium home textile, no text, no watermark."
+  },
+  {
+    "file": "public/assets/product-mulberry-classic.png",
+    "useCase": "product-mockup",
+    "size": "1024x1024",
+    "quality": "high",
+    "prompt": "Catalog-quality classic mulberry silk quilt product photo, neatly folded white quilt with subtle cotton cover texture, clean warm white background, soft natural shadow, premium but practical home textile, no text, no logo, no watermark."
+  },
+  {
+    "file": "public/assets/product-parent-child.png",
+    "useCase": "product-mockup",
+    "size": "1024x1024",
+    "quality": "high",
+    "prompt": "Product photo of a detachable parent-child four-season silk quilt set, two layered quilts partially separated to show thickness difference, clean bright home textile catalog style, ivory and pale green palette, no text, no logo, no watermark."
+  },
+  {
+    "file": "public/assets/gift-set-scene.png",
+    "useCase": "ads-marketing",
+    "size": "1024x1024",
+    "quality": "high",
+    "prompt": "Elegant Chinese silk quilt gift box on a warm home table, subtle wedding and family gift atmosphere, refined packaging, red accent ribbon, no brand text, no watermark, realistic product photography."
+  },
+  {
+    "file": "public/assets/craft-hands-silk.png",
+    "useCase": "photorealistic-natural",
+    "size": "1024x1024",
+    "quality": "high",
+    "prompt": "Close-up of artisan hands stretching white silk floss by hand in a real workshop, authentic craft texture, natural light, calm documentary style, no text, no watermark."
+  },
+  {
+    "file": "public/assets/store-experience.png",
+    "useCase": "photorealistic-natural",
+    "size": "1536x1024",
+    "quality": "high",
+    "prompt": "Photorealistic boutique silk quilt experience store, warm Chinese contemporary interior, a small craft demonstration table with white silk floss, neatly displayed quilts and gift boxes, calm premium retail atmosphere, no text, no logo, no watermark."
+  },
+  {
+    "file": "public/assets/trace-code-card.png",
+    "useCase": "product-mockup",
+    "size": "1024x1024",
+    "quality": "high",
+    "prompt": "Premium product verification scene for a silk quilt, close-up of a clean care card and a small QR-code-like tag attached to folded white silk bedding, warm ivory and deep green palette, realistic macro product photography, no readable text, no actual scannable QR code, no logo, no watermark."
+  }
+]
