@@ -23,13 +23,25 @@ https://<你的 GitHub 用户名>.github.io/<仓库名>/?version=interactive
 
 ## 二维码
 
-拿到线上互动版地址后执行：
+GitHub Actions 部署时会自动生成正式二维码：
+
+```text
+https://<你的 GitHub 用户名>.github.io/<仓库名>/qr-interactive.svg
+```
+
+二维码目标地址是互动副本：
+
+```text
+https://<你的 GitHub 用户名>.github.io/<仓库名>/?version=interactive
+```
+
+如果想在本地手动生成二维码，拿到线上互动版地址后执行：
 
 ```bash
 npm run qr -- https://<你的 GitHub 用户名>.github.io/<仓库名>/?version=interactive
 ```
 
-脚本会生成：
+脚本会生成或覆盖：
 
 ```text
 public/qr-interactive.svg
