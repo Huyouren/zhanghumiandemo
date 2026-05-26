@@ -1825,6 +1825,7 @@ blockquote {
 }
 
 .interactive-tabs {
+  grid-template-columns: repeat(4, 1fr);
   background: rgba(255, 253, 247, 0.95);
 }
 
