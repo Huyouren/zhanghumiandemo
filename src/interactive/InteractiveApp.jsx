@@ -6,7 +6,9 @@ import {
   Home,
   Minus,
   Plus,
+  QrCode,
   Search,
+  ScanSearch,
   ShoppingBag,
   SlidersHorizontal,
   Sparkles,
@@ -25,6 +27,7 @@ import { filterInteractiveProducts, getProductDiscount, quickNeeds, sortOptions 
 const tabs = [
   { id: "home", label: "首页", icon: Home },
   { id: "shop", label: "选购", icon: Store },
+  { id: "trace", label: "溯源", icon: ScanSearch },
   { id: "cart", label: "购物车", icon: ShoppingBag },
   { id: "mine", label: "我的", icon: UserRound }
 ];
@@ -122,6 +125,12 @@ export default function InteractiveApp() {
         onGoShop={() => jumpToShop("all")}
       />
     ),
+    trace: (
+      <InteractiveTrace
+        likedTrace={likedTrace}
+        onToggleTrace={() => setLikedTrace((current) => !current)}
+      />
+    ),
     mine: (
       <InteractiveMine
         favoriteCount={favorites.length}
@@ -146,7 +155,7 @@ export default function InteractiveApp() {
 
         <main className="app-content interactive-content">{page[activeTab]}</main>
 
-        {cart.length > 0 && activeTab !== "cart" && !showCheckout && !detailProduct ? (
+        {cart.length > 0 && ["home", "shop"].includes(activeTab) && !showCheckout && !detailProduct ? (
           <button className="floating-cart" type="button" onClick={() => setActiveTab("cart")}>
             <ShoppingBag size={17} />
             {summary.itemCount} 件 · ¥{summary.total}
@@ -431,6 +440,77 @@ function InteractiveCart({ cart, couponUsed, onToggleCoupon, onChangeQuantity, o
           </section>
         </>
       )}
+    </div>
+  );
+}
+
+function InteractiveTrace({ likedTrace, onToggleTrace }) {
+  const record = traceRecords[0];
+  const steps = record.timeline.slice(0, 4);
+
+  return (
+    <div className="interactive-page">
+      <section className="trace-hero-card">
+        <ImagePanel imageKey="trace-code-card" imageFile="/assets/trace-code-card.png" className="trace-hero-image" />
+        <div>
+          <span>一被一码</span>
+          <h1>{record.code}</h1>
+          <p>扫码验真，查看原料、批次和手工工序。</p>
+          <button type="button" onClick={onToggleTrace}>
+            {likedTrace ? <Check size={16} /> : <Star size={16} />}
+            {likedTrace ? "已关注" : "关注溯源"}
+          </button>
+        </div>
+      </section>
+
+      <section className="trace-scan-card">
+        <div>
+          <QrCode size={26} />
+          <span>扫码查验</span>
+        </div>
+        <strong>{record.batch}</strong>
+      </section>
+
+      <section className="trace-info-grid">
+        {[
+          ["产地", record.origin],
+          ["原料", record.material],
+          ["工坊", record.artisan],
+          ["质检", record.inspection]
+        ].map(([label, value]) => (
+          <article key={label}>
+            <span>{label}</span>
+            <strong>{value}</strong>
+          </article>
+        ))}
+      </section>
+
+      <section className="trace-step-list">
+        <div className="interactive-section-title">
+          <div>
+            <span>工艺节点</span>
+            <h2>看见每一步手作</h2>
+          </div>
+        </div>
+        {steps.map((step) => (
+          <article key={step.id}>
+            <i>{step.id}</i>
+            <div>
+              <strong>{step.title}</strong>
+              <p>{step.text}</p>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="care-pill-list">
+        {record.careTips.map((tip) => (
+          <span key={tip}>
+            <Check size={14} />
+            {tip}
+          </span>
+        ))}
+      </section>
     </div>
   );
 }

@@ -3,9 +3,11 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 describe("interactive bottom tabs", () => {
-  it("uses four equal columns for the four interactive tab items", () => {
+  it("uses five equal columns for home, shop, trace, cart, and mine", () => {
     const css = readFileSync(resolve(process.cwd(), "src/styles.css"), "utf8");
+    const app = readFileSync(resolve(process.cwd(), "src/interactive/InteractiveApp.jsx"), "utf8");
 
-    expect(css).toMatch(/\.interactive-tabs\s*\{[^}]*grid-template-columns:\s*repeat\(4,\s*1fr\);/s);
+    expect(app).toMatch(/id:\s*"trace",\s*label:\s*"溯源"/);
+    expect(css).toMatch(/\.interactive-tabs\s*\{[^}]*grid-template-columns:\s*repeat\(5,\s*1fr\);/s);
   });
 });

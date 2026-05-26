@@ -55,6 +55,11 @@ async function main() {
   await page.getByText("已加入购物车").waitFor();
   await page.screenshot({ path: `${outputDir}/interactive-shop-mobile.png`, fullPage: true });
 
+  await page.getByText("已加入购物车").waitFor({ state: "hidden" });
+  await page.getByTitle("溯源").click();
+  await page.getByText("扫码查验").waitFor();
+  await page.screenshot({ path: `${outputDir}/interactive-trace-mobile.png`, fullPage: true });
+
   await page.locator('button[title="购物车"]').click();
   await page.getByText("会员券 ¥120").waitFor();
   await page.getByRole("button", { name: "结算" }).click();
