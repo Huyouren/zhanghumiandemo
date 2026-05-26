@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { imagePrompts } from "../data/catalog";
+import { assetPath } from "../lib/assetPath";
 
 const labels = {
   "hero-silk-bedroom": "蚕丝生活方式",
@@ -15,16 +16,17 @@ const labels = {
 export default function ImagePanel({ imageKey, imageFile, className = "" }) {
   const [loaded, setLoaded] = useState(false);
   const prompt = imagePrompts.find((item) => item.file.endsWith(`${imageKey}.png`));
+  const resolvedImageFile = assetPath(imageFile);
 
   return (
     <div
       className={`image-panel image-panel-${imageKey} ${loaded ? "is-loaded" : ""} ${className}`}
-      data-asset={imageFile}
+      data-asset={resolvedImageFile}
       title={prompt?.prompt}
     >
       <img
         className={loaded ? "loaded" : ""}
-        src={imageFile}
+        src={resolvedImageFile}
         alt=""
         aria-hidden="true"
         onLoad={() => setLoaded(true)}
