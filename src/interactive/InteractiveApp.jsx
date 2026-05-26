@@ -22,6 +22,7 @@ import { useMemo, useState } from "react";
 import ImagePanel from "../components/ImagePanel";
 import { categories, memberProfile, products, stores, traceRecords } from "../data/catalog";
 import { addToCart, changeQuantity, removeFromCart, summarizeCart } from "../lib/cart";
+import { lookupTraceRecord } from "../lib/trace";
 import { filterInteractiveProducts, getProductDiscount, quickNeeds, sortOptions } from "./interactiveCatalog";
 
 const tabs = [
@@ -447,6 +448,18 @@ function InteractiveCart({ cart, couponUsed, onToggleCoupon, onChangeQuantity, o
 function InteractiveTrace({ likedTrace, onToggleTrace }) {
   const record = traceRecords[0];
   const steps = record.timeline.slice(0, 4);
+  const [traceCode, setTraceCode] = useState("");
+  const [traceResult, setTraceResult] = useState(null);
+
+  function verifyTrace(nextCode = traceCode) {
+    const result = lookupTraceRecord(nextCode, traceRecords);
+    setTraceResult(result);
+  }
+
+  function simulateScan() {
+    setTraceCode(record.code);
+    verifyTrace(record.code);
+  }
 
   return (
     <div className="interactive-page">
@@ -463,12 +476,38 @@ function InteractiveTrace({ likedTrace, onToggleTrace }) {
         </div>
       </section>
 
-      <section className="trace-scan-card">
-        <div>
-          <QrCode size={26} />
-          <span>扫码查验</span>
+      <section className="trace-verify-card">
+        <div className="trace-verify-head">
+          <div>
+            <QrCode size={24} />
+            <span>扫码查验</span>
+          </div>
+          <strong>{record.batch}</strong>
         </div>
-        <strong>{record.batch}</strong>
+
+        <div className="trace-code-form">
+          <input
+            value={traceCode}
+            onChange={(event) => setTraceCode(event.target.value)}
+            placeholder="输入溯源码 ZHM-2026-0518"
+            aria-label="溯源码"
+          />
+          <button type="button" onClick={() => verifyTrace()}>
+            查验
+          </button>
+        </div>
+
+        <button className="trace-scan-button" type="button" onClick={simulateScan}>
+          <ScanSearch size={17} />
+          模拟扫码
+        </button>
+
+        {traceResult ? (
+          <div className={`trace-result ${traceResult.ok ? "success" : "error"}`}>
+            {traceResult.ok ? <Check size={16} /> : <X size={16} />}
+            <span>{traceResult.ok ? "查验通过，已匹配该床蚕丝被档案" : traceResult.message}</span>
+          </div>
+        ) : null}
       </section>
 
       <section className="trace-info-grid">

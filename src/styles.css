@@ -1724,7 +1724,7 @@ blockquote {
 }
 
 .trace-hero-card,
-.trace-scan-card,
+.trace-verify-card,
 .trace-info-grid article,
 .trace-step-list,
 .care-pill-list {
@@ -1776,11 +1776,9 @@ blockquote {
   font-weight: 800;
 }
 
-.trace-scan-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+.trace-verify-card {
+  display: grid;
+  gap: 10px;
   padding: 13px;
   color: #fff;
   background:
@@ -1788,17 +1786,86 @@ blockquote {
     linear-gradient(135deg, #173b2e, #376852);
 }
 
-.trace-scan-card div {
+.trace-verify-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.trace-verify-head div {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-weight: 900;
 }
 
-.trace-scan-card strong {
+.trace-verify-head strong {
   min-width: 0;
   text-align: right;
   font-size: 13px;
+}
+
+.trace-code-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.trace-code-form input {
+  min-width: 0;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: #173b2e;
+  background: rgba(255, 255, 255, 0.94);
+  outline: 0;
+}
+
+.trace-code-form button,
+.trace-scan-button {
+  min-height: 40px;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.trace-code-form button {
+  padding: 0 14px;
+  color: #173b2e;
+  background: #fff;
+}
+
+.trace-scan-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  color: #fff9e8;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.trace-result {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.trace-result.success {
+  color: #173b2e;
+  background: #eff8f2;
+}
+
+.trace-result.error {
+  color: #fff7ed;
+  background: rgba(168, 50, 62, 0.48);
 }
 
 .trace-info-grid {
