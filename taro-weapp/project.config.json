@@ -1,0 +1,13 @@
+{
+  "miniprogramRoot": "dist/",
+  "projectname": "zhanghumian-taro-weapp",
+  "description": "张蝴绵 Taro 微信小程序副本",
+  "appid": "wx31bbefb242f91637",
+  "compileType": "miniprogram",
+  "setting": {
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "enhance": true
+  }
+}
